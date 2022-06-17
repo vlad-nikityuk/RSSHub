@@ -8,7 +8,7 @@ pageClass: routes
 
 ### 9To5 Sub-site
 
-<RouteEn author="HenryQW" example="/9to5/mac/aapl" path="/9to5/:subsite/:category?" :paramsDesc="['Subsite name', 'Tag name inside the url of the tag page']">
+<RouteEn author="HenryQW" example="/9to5/mac/aapl" path="/9to5/:subsite/:category?" :paramsDesc="['Subsite name', 'Tag name inside the url of the tag page']" rssbud="1" radar="1">
 
 Supported sub-sites：
 | 9To5Mac | 9To5Google | 9To5Toys |
@@ -459,7 +459,7 @@ Edition
 
 ### User
 
-<RouteEn author="fifteen42 rde9" example="/mirror/tingfei.eth" path="/mirror/:id" :paramsDesc="['user id']" />
+<RouteEn author="fifteen42 rde9 nczitzk" example="/mirror/tingfei.eth" path="/mirror/:id" :paramsDesc="['user id']" />
 
 ## National Association of Colleges and Employers
 
