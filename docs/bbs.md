@@ -330,6 +330,14 @@ pageClass: routes
 
 </Route>
 
+### 论坛摘要
+
+<Route author="shinemoon" example="/saraba1st/digest/forum-75-1" path="/saraba1st/digest/:tid" :paramsDesc="['论坛 id']" radar="1">
+
+版面网址如果为 <https://bbs.saraba1st.com/2b/forum-75-1.html> 那么论坛 id 就是 `forum-75-1`。
+
+</Route>
+
 ## SCBOY 论坛
 
 ### 帖子
@@ -472,7 +480,32 @@ pageClass: routes
 
 ### 工作机会
 
-<Route author="sfyumi" example="/eleduck/jobs" path="/eleduck/jobs"/>
+<Route author="sfyumi" example="/eleduck/jobs" path="/eleduck/jobs" radar="1"/>
+
+### 分类文章
+
+<Route author="running-grass" example="/eleduck/posts/4" path="/eleduck/posts/:id?" :paramsDesc="['分类id,可以论坛的URL找到，默认为全部']" radar="1">
+
+| id | 分类     |
+| -- | ------ |
+| 0  | 全部     |
+| 1  | 讨论     |
+| 2  | 分享     |
+| 3  | 露个脸    |
+| 4  | 访谈故事   |
+| 5  | 招聘     |
+| 10 | 海外移民   |
+| 12 | 英语     |
+| 14 | 电鸭官方   |
+| 15 | 独立产品   |
+| 17 | 闲话开源   |
+| 19 | Web3   |
+| 21 | 设计     |
+| 22 | 人才库    |
+| 23 | Upwork |
+| 24 | 经验课    |
+
+</Route>
 
 ## 斗鱼
 

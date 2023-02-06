@@ -104,6 +104,12 @@ pageClass: routes
 
 </Route>
 
+## Paradigm
+
+### Writing
+
+<Route author="Fatpandac" example="/paradigm/writing" path="/paradigm/writing" />
+
 ## Seeking Alpha
 
 ### Summary
@@ -208,6 +214,12 @@ TokenInsight 官方亦有提供 RSS，可参考 <https://api.tokeninsight.com/re
 
 </Route>
 
+## 财经网
+
+### 滚动新闻
+
+<Route author="TonyRL" example="/caijing/roll" path="/caijing/roll" rardr="1" rssbud="1"/>
+
 ## 财联社
 
 ### 电报
@@ -272,15 +284,23 @@ TokenInsight 官方亦有提供 RSS，可参考 <https://api.tokeninsight.com/re
 
 ### 用户文章
 
-<Route author="nczitzk" example="/gelonghui/user/5273" path="/gelonghui/user/:id" :paramsDesc="['用户编号, 可在用户页 URL 中找到']" radar="1" rssbud="1"/>
+<Route author="nczitzk" example="/gelonghui/user/5273" path="/gelonghui/user/:id" :paramsDesc="['用户编号，可在用户页 URL 中找到']" radar="1" rssbud="1"/>
 
 ### 主题文章
 
-<Route author="nczitzk" example="/gelonghui/subject/4" path="/gelonghui/subject/:id"  :paramsDesc="['主题编号, 可在主题页 URL 中找到']" radar="1" rssbud="1"/>
+<Route author="nczitzk" example="/gelonghui/subject/4" path="/gelonghui/subject/:id"  :paramsDesc="['主题编号，可在主题页 URL 中找到']" radar="1" rssbud="1"/>
 
 ### 搜索关键字
 
 <Route author="nczitzk" example="/gelonghui/keyword/早报" path="/gelonghui/keyword/:keyword" :paramsDesc="['搜索关键字']" radar="1" rssbud="1"/>
+
+### 最热文章
+
+<Route author="TonyRL" example="/gelonghui/hot-article" path="/gelonghui/hot-article/:type?" :paramsDesc="['`day` 为日排行，`week` 为周排行，默认为 `day`']" radar="1" rssbud="1"/>
+
+### 实时快讯
+
+<Route author="TonyRL" example="/gelonghui/live" path="/gelonghui/live" radar="1" rssbud="1"/>
 
 ## 国家金融与发展实验室
 
@@ -387,7 +407,7 @@ TokenInsight 官方亦有提供 RSS，可参考 <https://api.tokeninsight.com/re
 
 ### 上市公司信息最新公告披露
 
-<Route author="alienmao" example="/sse/disclosure/beginDate=2018-08-18&endDate=2020-08-25&productId=600696" path="/sse/disclosure/:query?"  :paramsDesc="['筛选条件，见示例']" radar="1" rssbud="1"/>
+<Route author="harveyqiu" example="/sse/disclosure/beginDate=2018-08-18&endDate=2020-08-25&productId=600696" path="/sse/disclosure/:query?"  :paramsDesc="['筛选条件，见示例']" radar="1" rssbud="1"/>
 
 ### 可转换公司债券公告
 

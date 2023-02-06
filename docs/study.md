@@ -37,12 +37,26 @@ pageClass: routes
 | bilingual   | 双语新闻 (Bilingual News)                  |
 | address     | 总统演讲 (President Address)               |
 
+## Asian Innovation and Entrepreneurship Association
+
+### Seminar Series
+
+<Route author="zxx-457" example="/aiea/seminars/upcoming" path="/aiea/seminars/:period" :paramsDesc="['时间段']">
+
+| 时间段      |
+| -------- |
+| upcoming |
+| past     |
+| both     |
+
+</Route>
+
 ## CTFHub Calendar
 
 ### 查询国内外 CTF 赛事信息
 
-<Route author="frankli0324" example="/ctfhub/search" 
-path="/ctfhub/search/:limit?/:form?/:class?/:title?" 
+<Route author="frankli0324" example="/ctfhub/search"
+path="/ctfhub/search/:limit?/:form?/:class?/:title?"
 :paramsDesc="['一个整数，筛选最新的limit场比赛，默认为10', '比赛形式', '比赛类型', '通过CTF赛事名称过滤']">
 
 | `:class` | 类型                             |
@@ -65,8 +79,8 @@ path="/ctfhub/search/:limit?/:form?/:class?/:title?"
 
 ### 查询近期赛事
 
-<Route author="frankli0324" example="/ctfhub/upcoming" 
-path="/ctfhub/upcoming/:limit?" 
+<Route author="frankli0324" example="/ctfhub/upcoming"
+path="/ctfhub/upcoming/:limit?"
 :paramsDesc="['一个整数，筛选最近的limit场比赛，默认为5']">
 
 </Route>
@@ -220,6 +234,12 @@ path="/ctfhub/upcoming/:limit?"
 
 </Route>
 
+## ResearchGate
+
+### Publications
+
+<Route author="nczitzk" example="/researchgate/publications/Somsak-Panha" path="/researchgate/publications/:username" :paramsDesc="['用户名，可在用户页地址栏中找到']" puppeteer="1" anticrawler="1"/>
+
 ## X-MOL 平台
 
 ### 新闻
@@ -281,6 +301,24 @@ path="/ctfhub/upcoming/:limit?"
 :::
 
 </Route>
+
+## 福建考试报名网
+
+### 分类
+
+<Route author="nczitzk" example="/fjksbm" path="/fjksbm/:category?" :paramsDesc="['分类，见下表，默认为网络报名进行中']" radar="1">
+
+| 已发布公告 (方案)，即将开始 | 网络报名进行中 | 网络报名结束等待打印准考证 | 正在打印准考证 | 考试结束，等待发布成绩 | 已发布成绩 | 新闻动态 | 政策法规   |
+| --------------- | ------- | ------------- | ------- | ----------- | ----- | ---- | ------ |
+| 0               | 1       | 2             | 3       | 4           | 5     | news | policy |
+
+</Route>
+
+## 韓國海事法學會
+
+### 学术论文
+
+<Route author="TonyRL" example="/kimlaw/thesis" path="/kimlaw/thesis" radar="1"/>
 
 ## 杭州市国家普通话测试网报信息
 
@@ -630,6 +668,12 @@ path="/ctfhub/upcoming/:limit?"
 ### 通知公告
 
 <Route author="nczitzk" example="/cpta/notice" path="/cpta/notice" />
+
+## 中国研究生招生信息网
+
+### 考研动态
+
+<Route author="SunBK201" example="/chsi/kydt" path="/chsi/kydt" radar="1" />
 
 ## 中国智库网
 

@@ -494,6 +494,10 @@ Solidot 提供的 feed:
 
 <Route author="xyqfer" example="/economist/gre-vocabulary" path="/economist/gre-vocabulary" radar="1" rssbud="1"/>
 
+### 商论
+
+<Route author="prnake" example="/economist/global-business-review/cn-en" path="/economist/global-business-review/:language?" :paramsDesc="['语言，支持简体 cn、繁体 tw、英文 en ，可选择多个语言，默认为 cn-en']"  radar="1" rssbud="1"/>
+
 ### 下载
 
 <Route author="nczitzk" example="/economist/download" path="/economist/download" >
@@ -526,7 +530,7 @@ Solidot 提供的 feed:
 
 ### 新聞
 
-<Route author="KeiLongW" example="/yahoo-news/hk/world" path="/yahoo-news/:region/:category?" :paramsDesc="['地区','类别']">
+<Route author="KeiLongW" example="/yahoo/news/hk/world" path="/yahoo/news/:region/:category?" :paramsDesc="['地区','类别']" radar="1">
 
 `地区`
 
@@ -582,7 +586,7 @@ Provides all of the articles by the specified Yahoo! author.
 
 ### 新闻分类
 
-<Route author="idealclover" example="/caixin/finance/regulation" path="/caixin/:column/:category" :paramsDesc="['栏目名', '栏目下的子分类名']">
+<Route author="idealclover" example="/caixin/finance/regulation" path="/caixin/:column/:category" :paramsDesc="['栏目名', '栏目下的子分类名']" supportPodcast="1">
 
 Column 列表：
 
@@ -606,11 +610,11 @@ Category 列表：
 
 ### 首页新闻
 
-<Route author="EsuRt"  example="/caixin/article" path="/caixin/article"/>
+<Route author="EsuRt"  example="/caixin/article" path="/caixin/article" radar="1" supportPodcast="1"/>
 
 ### 最新文章
 
-<Route author="tpnonthealps" example="/caixin/latest" path="/caixin/latest">
+<Route author="tpnonthealps" example="/caixin/latest" path="/caixin/latest" radar="1">
 
 说明：此 RSS feed 会自动抓取财新网的最新文章，但不包含 FM 及视频内容。
 
@@ -618,11 +622,11 @@ Category 列表：
 
 ### 财新数据通
 
-<Route author="nczitzk" example="/caixin/database" path="/caixin/database"/>
+<Route author="nczitzk" example="/caixin/database" path="/caixin/database" radar="1"/>
 
 ### 财新一线
 
-<Route author="boypt"  example="/caixin/yxnews" path="/caixin/yxnews"/>
+<Route author="boypt"  example="/caixin/k" path="/caixin/k" radar="1" supportPodcast="1"/>
 
 ## 参考消息
 
@@ -1618,6 +1622,20 @@ category 对应的关键词有
 
 </Route>
 
+## 内蒙古广播电视台
+
+### 点播
+
+<Route author="nczitzk" example="/nmtv/column/877" path="/nmtv/column/:id?" :paramsDesc="['栏目 id，可在对应栏目 URL 中找到']">
+
+::: tip 提示
+
+如 [蒙古语卫视新闻联播](http://www.nmtv.cn/folder292/folder663/folder301/folder830/folder877) 的 URL 为 <http://www.nmtv.cn/folder292/folder663/folder301/folder830/folder877>，其栏目 id 为末尾数字编号，即 `877`。可以得到其对应路由为 [`/nmtv/column/877`](https://rsshub.app/nmtv/column/877)
+
+:::
+
+</Route>
+
 ## 纽约时报
 
 ### 新闻
@@ -1680,7 +1698,6 @@ category 对应的关键词有
 
 | 频道 ID  | 频道名 |
 | ------ | --- |
-| 25949  | 要闻  |
 | 26916  | 视频  |
 | 108856 | 战疫  |
 | 25950  | 时事  |
@@ -1691,9 +1708,9 @@ category 对应的关键词有
 | 119489 | 智库  |
 | 25953  | 生活  |
 | 26161  | 问吧  |
+| 122908 | 国际  |
 | -21    | 体育  |
 | -24    | 评论  |
-| -23    | 国际  |
 
 </Route>
 
@@ -1947,9 +1964,11 @@ category 对应的关键词有
 
 ### 电视回放
 
-<Route author="nczitzk" example="/sctv/programme/1" path="/sctv/programme/:id?" :paramsDesc="['节目 id，可在对应节目页中找到，默认为 `1`，即四川新闻联播']">
+<Route author="nczitzk" example="/sctv/programme/1" path="/sctv/programme/:id?/:limit?/:isFull?" :paramsDesc="['节目 id，可在对应节目页中找到，默认为 `1`，即四川新闻联播', '期数，默认为 15，即单次获取最新 15 期', '是否仅获取完整视频，填写 true/yes 表示是、false/no 表示否，默认是']">
 
 ::: tip 提示
+
+参数 **是否仅获取完整视频** 设置为 `true` `yes` `t` `y` 等值后，路由仅返回当期节目的完整视频，而不会返回节目所提供的节选视频。
 
 查看更多电视节目请前往 [电视回放](https://www.sctv.com/column/list)
 
@@ -2027,11 +2046,11 @@ category 对应的关键词有
 
 ### 最新上線
 
-<Route author="TonyRL" example="/cw/today" path="/cw/today" radar="1" rssbud="1"/>
+<Route author="TonyRL" example="/cw/today" path="/cw/today" radar="1" rssbud="1" puppeteer="1"/>
 
 ### 主頻道
 
-<Route author="TonyRL" example="/cw/master/8" path="/cw/master/:channel" :paramsDesc="['主頻道 ID，可在 URL 中找到']" radar="1" rssbud="1">
+<Route author="TonyRL" example="/cw/master/8" path="/cw/master/:channel" :paramsDesc="['主頻道 ID，可在 URL 中找到']" radar="1" rssbud="1" puppeteer="1">
 
 | 主頻道名稱 | 主頻道 ID |
 | ----- | ------ |
@@ -2053,7 +2072,11 @@ category 对应的关键词有
 
 ### 子頻道
 
-<Route author="TonyRL" example="/cw/sub/615" path="/cw/sub/:channel" :paramsDesc="['子頻道 ID，可在 URL 中找到']" radar="1" rssbud="1"/>
+<Route author="TonyRL" example="/cw/sub/615" path="/cw/sub/:channel" :paramsDesc="['子頻道 ID，可在 URL 中找到']" radar="1" rssbud="1" puppeteer="1"/>
+
+### 作者
+
+<Route author="TonyRL" example="/cw/author/57" path="/cw/author/:channel" :paramsDesc="['作者 ID，可在 URL 中找到']" radar="1" rssbud="1" puppeteer="1"/>
 
 ## 卫报 The Guardian
 
@@ -2210,6 +2233,12 @@ category 对应的关键词有
 ### PDF 版
 
 <Route author="nczitzk" example="/hkcd/pdf" path="/hkcd/pdf"/>
+
+## 新华每日电讯
+
+### 今日
+
+<Route author="Dustin-Jiang" example="/mrdx/today" path="/mrdx/today" />
 
 ## 新京报
 
@@ -2393,6 +2422,20 @@ category 对应的关键词有
 ### 最新
 
 <Route author="yuxinliu-alex" example="/chinanews" path="/chinanews" radar="1" rssbud="1" />
+
+## 中国新闻周刊
+
+### 栏目
+
+提取文章全文。
+
+<Route author="changren-wcr" example="/inewsweek/survey" path="/inewsweek/:channel" :paramsDesc="['栏目']">
+
+| 封面    | 时政       | 社会      | 经济      | 国际    | 调查     | 人物     |
+| ----- | -------- | ------- | ------- | ----- | ------ | ------ |
+| cover | politics | society | finance | world | survey | people |
+
+</Route>
 
 ## 中山网
 
