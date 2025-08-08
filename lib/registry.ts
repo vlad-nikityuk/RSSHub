@@ -5,6 +5,7 @@ import { routePath } from 'hono/route';
 import path from 'node:path';
 import { serveStatic } from '@hono/node-server/serve-static';
 import { config } from '@/config';
+import { getCurrentPath } from '@/utils/helpers';
 
 import index from '@/routes/index';
 import healthz from '@/routes/healthz';
@@ -12,7 +13,7 @@ import robotstxt from '@/routes/robots.txt';
 import metrics from '@/routes/metrics';
 import logger from '@/utils/logger';
 
-const __dirname = import.meta.dirname;
+const __dirname = getCurrentPath(import.meta.url);
 
 function isSafeRoutes(routes: RoutesType): boolean {
     return Object.values(routes).every((route: Route) => !route.features?.nsfw);
