@@ -3,6 +3,7 @@ import { directoryImport } from 'directory-import';
 import { Hono, type Handler } from 'hono';
 import { routePath } from 'hono/route';
 import path from 'node:path';
+import fs from 'node:fs';
 import { serveStatic } from '@hono/node-server/serve-static';
 import { config } from '@/config';
 import { getCurrentPath } from '@/utils/helpers';
@@ -54,16 +55,36 @@ export type NamespacesType = Record<
 
 let namespaces: NamespacesType = {};
 
+// Check if built routes files exist before trying to import them
+const routesJsPath = path.join(__dirname, '../assets/build/routes.js');
+const routesJsonPath = path.join(__dirname, '../assets/build/routes.json');
+
 switch (process.env.NODE_ENV) {
     case 'production':
-        namespaces = (await import('../assets/build/routes.js')).default;
+        if (fs.existsSync(routesJsPath)) {
+            namespaces = (await import('../assets/build/routes.js')).default;
+        } else {
+            // Fall back to dynamic loading if built files don't exist (e.g., during build process)
+            modules = directoryImport({
+                targetDirectoryPath: path.join(__dirname, './routes'),
+                importPattern: /\.ts$/,
+            }) as typeof modules;
+        }
         break;
     case 'test':
-        // @ts-expect-error
-        namespaces = await import('../assets/build/routes.json');
-        if (namespaces.default) {
-            // @ts-ignore
-            namespaces = namespaces.default;
+        if (fs.existsSync(routesJsonPath)) {
+            // @ts-expect-error
+            namespaces = await import('../assets/build/routes.json');
+            if (namespaces.default) {
+                // @ts-ignore
+                namespaces = namespaces.default;
+            }
+        } else {
+            // Fall back to dynamic loading if built files don't exist
+            modules = directoryImport({
+                targetDirectoryPath: path.join(__dirname, './routes'),
+                importPattern: /\.ts$/,
+            }) as typeof modules;
         }
         break;
     default:
